@@ -1,0 +1,10 @@
+{
+  "name": "@dashtree/core",
+  "private": true,
+  "scripts": {
+    "compiler:build": "cargo build",
+    "compiler:check": "cargo check",
+    "test-runner:units": "cargo test"
+  },
+  "devDependencies": {}
+}

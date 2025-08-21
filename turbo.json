@@ -10,28 +10,50 @@
     "pnpm-*.yaml",
     "turbo.json"
   ],
-
   "tasks": {
     "compiler:check": {
       "cache": true,
       "inputs": [
-        "./**/*.{js,ts,tsx}",
+        "./**/*.{js,ts,rs}",
         "./**/tsconfig.*",
+        "./**/.cargo/config.toml",
         "./package.json",
+        "./Cargo.toml",
         "!./out-tsc/",
+        "!./target/",
         "!./dist/",
-        "!./.next/",
         "!./coverage/"
       ],
       "outputLogs": "errors-only",
       "persistent": false
     },
-    "test-runner:units": {
+    "compiler:build": {
       "cache": true,
       "inputs": [
-        "./**/*.{t,j}s",
+        "./**/*.{js,ts,rs}",
         "./**/tsconfig.*",
+        "./**/.cargo/config.toml",
+        "./package.json",
+        "./Cargo.toml",
         "!./out-tsc/",
+        "!./target/",
+        "!./dist/",
+        "!./coverage/"
+      ],
+      "outputs": ["./target/debug/*.{d,dylib}"],
+      "outputLogs": "errors-only",
+      "persistent": false
+    },
+    "test-runner:units": {
+      "cache": false,
+      "inputs": [
+        "./**/*.{js,ts,rs}",
+        "./**/tsconfig.*",
+        "./**/.cargo/config.toml",
+        "./package.json",
+        "./Cargo.toml",
+        "!./out-tsc/",
+        "!./target/",
         "!./dist/",
         "!./coverage/"
       ],

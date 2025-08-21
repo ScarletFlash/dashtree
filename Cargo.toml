@@ -1,0 +1,15 @@
+[workspace]
+members = ["packages/core"]
+resolver = "3"
+
+[workspace.package]
+authors = ["Fedor Usakov <scarletflash.dev@gmail.com>"]
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/ScarletFlash/dashtree/"
+publish = false
+
+[profile.release]
+lto = true
+opt-level = 'z'
+codegen-units = 1
