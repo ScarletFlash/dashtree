@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/turbo/schema.json",
+  "globalDependencies": [
+    "!./node_modules/",
+    "!./packages/**/*tsbuildinfo",
+    "!./packages/**/.jestcache/",
+    "!./packages/**/.turbo/",
+    "!./packages/**/coverage/",
+    "!.turbo/**/*",
+    "pnpm-*.yaml",
+    "turbo.json"
+  ],
+
+  "tasks": {
+    "compiler:check": {
+      "cache": true,
+      "inputs": [
+        "./**/*.{js,ts,tsx}",
+        "./**/tsconfig.*",
+        "./package.json",
+        "!./out-tsc/",
+        "!./dist/",
+        "!./.next/",
+        "!./coverage/"
+      ],
+      "outputLogs": "errors-only",
+      "persistent": false
+    },
+    "test-runner:units": {
+      "cache": true,
+      "inputs": [
+        "./**/*.{t,j}s",
+        "./**/tsconfig.*",
+        "!./out-tsc/",
+        "!./dist/",
+        "!./coverage/"
+      ],
+      "outputLogs": "full",
+      "persistent": false
+    }
+  },
+  "ui": "stream"
+}

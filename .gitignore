@@ -1,0 +1,14 @@
+!package-lock.json
+**/*.tsbuildinfo
+**/package-lock.json
+*-cache/
+.jestcache/
+.jest/
+.turbo/
+/tsconfig.json
+coverage/
+dist/
+node_modules/
+npm-debug.log*
+out-tsc/
+.github/

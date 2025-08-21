@@ -1,0 +1,16 @@
+{
+  "name": "@dashtree/root",
+  "private": true,
+  "scripts": {
+    "compiler:check": "turbo run compiler:check",
+    "test-runner:units": "turbo run test-runner:units"
+  },
+  "devDependencies": {
+    "turbo": "catalog:codebase"
+  },
+  "engines": {
+    "pnpm": "10.12.4",
+    "node": "22.17.0"
+  },
+  "packageManager": "pnpm@10.12.4"
+}
