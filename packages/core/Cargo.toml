@@ -13,3 +13,5 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
+wasm-bindgen = { version = "0.2", default-features = false, features = ["std"] }
+js-sys = "0.3"

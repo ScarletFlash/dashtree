@@ -2,6 +2,7 @@
   "name": "@dashtree/core",
   "private": true,
   "scripts": {
+    "bundler:build": "wasm-pack build --target bundler --out-dir dist --out-name index",
     "compiler:build": "cargo build",
     "compiler:check": "cargo check",
     "test-runner:units": "cargo test"
