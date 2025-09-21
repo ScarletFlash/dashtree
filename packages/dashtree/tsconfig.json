@@ -1,36 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "allowJs": false,
-    "composite": false,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "disableReferencedProjectLoad": true,
-    "disableSizeLimit": true,
-    "disableSolutionSearching": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "inlineSources": false,
-    "isolatedModules": true,
-    "incremental": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "noErrorTruncation": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "sourceMap": true,
-    "target": "ESNext",
-    "outDir": "./out-tsc",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"]
-  },
-  "include": ["src"]
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.test.json"
+    }
+  ]
 }

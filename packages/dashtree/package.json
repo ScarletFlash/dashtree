@@ -2,13 +2,16 @@
   "name": "dashtree",
   "version": "1.0.0",
   "private": true,
-  "module": "./src/dash-tree.ts",
-  "types": "./src/dash-tree.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/src/index.d.ts",
   "scripts": {
+    "bundler:build": "rslib build",
     "compiler:check": "tsc --project tsconfig.json --noEmit",
     "test-runner:units": "NODE_OPTIONS='--experimental-vm-modules' jest --config ./jest.config.ts"
   },
   "devDependencies": {
+    "@rslib/core": "catalog:stack",
     "@dashtree/core": "workspace:*",
     "@dashtree/testing": "workspace:*",
     "@jest/globals": "catalog:stack",

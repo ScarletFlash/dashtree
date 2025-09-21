@@ -11,6 +11,5 @@ dist/
 node_modules/
 npm-debug.log*
 out-tsc/
-.github/
 target/
 .DS_Store

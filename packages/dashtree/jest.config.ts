@@ -1,7 +1,9 @@
 import { createDefaultEsmPreset, type JestConfigWithTsJest } from "ts-jest";
 
 export default {
-  ...createDefaultEsmPreset(),
+  ...createDefaultEsmPreset({
+    tsconfig: "./tsconfig.test.json",
+  }),
   roots: ["<rootDir>"],
   cache: true,
   cacheDirectory: "<rootDir>/.jestcache",
