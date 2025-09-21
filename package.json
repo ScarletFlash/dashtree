@@ -2,6 +2,7 @@
   "name": "@dashtree/root",
   "private": true,
   "scripts": {
+    "postinstall": "cargo install cargo-tarpaulin",
     "compiler:build": "turbo run compiler:build",
     "compiler:check": "turbo run compiler:check",
     "test-runner:units": "turbo run test-runner:units"

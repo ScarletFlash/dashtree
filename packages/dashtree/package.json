@@ -1,0 +1,20 @@
+{
+  "name": "dashtree",
+  "version": "1.0.0",
+  "private": true,
+  "module": "./src/dash-tree.ts",
+  "types": "./src/dash-tree.ts",
+  "scripts": {
+    "compiler:check": "tsc --project tsconfig.json --noEmit",
+    "test-runner:units": "NODE_OPTIONS='--experimental-vm-modules' jest --config ./jest.config.ts"
+  },
+  "devDependencies": {
+    "@dashtree/core": "workspace:*",
+    "@jest/globals": "catalog:stack",
+    "@jest/types": "catalog:stack",
+    "jest": "catalog:stack",
+    "ts-jest": "catalog:stack",
+    "ts-node": "catalog:stack",
+    "typescript": "catalog:stack"
+  }
+}

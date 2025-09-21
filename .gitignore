@@ -13,3 +13,4 @@ npm-debug.log*
 out-tsc/
 .github/
 target/
+.DS_Store

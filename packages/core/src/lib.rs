@@ -19,7 +19,7 @@ mod wasm_bindings {
     #[wasm_bindgen]
     impl FlatTree {
         #[wasm_bindgen(constructor)]
-        pub fn new(root_objects: Vec<JsValue>, js_get_direct_children: &Function) -> Self {
+        pub fn new(root_payloads: Vec<JsValue>, js_get_direct_children: &Function) -> Self {
             let get_direct_children_closure = move |parent: &JsValue| -> Vec<JsValue> {
                 let js_direct_children = Array::from(
                     &js_get_direct_children
@@ -35,8 +35,16 @@ mod wasm_bindings {
             };
 
             Self {
-                _inner: _FlatTree::new(root_objects, get_direct_children_closure),
+                _inner: _FlatTree::new(root_payloads, get_direct_children_closure),
             }
+        }
+
+        pub fn get_nodes(&self) -> Vec<JsValue> {
+            self._inner
+                .get_nodes()
+                .iter()
+                .map(|node| self.node_to_js_value(node))
+                .collect()
         }
 
         pub fn find_index(&self, predicate: &Function) -> Option<usize> {
@@ -79,7 +87,6 @@ mod wasm_bindings {
                 .map_err(|internal_error| self.error_to_js_value(internal_error))
         }
 
-        #[wasm_bindgen(js_name = "forEachParent")]
         pub fn for_each_parent(
             &self,
             target_index: usize,

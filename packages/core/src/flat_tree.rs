@@ -19,6 +19,10 @@ impl<T: Clone> FlatTree<T> {
         }
     }
 
+    pub fn get_nodes(&self) -> &Vec<TreeNode<T>> {
+        &self.nodes
+    }
+
     pub fn find_index<F>(&self, predicate: F) -> Option<usize>
     where
         F: Fn(&TreeNode<T>) -> bool,
