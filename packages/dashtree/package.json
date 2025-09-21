@@ -6,6 +6,11 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScarletFlash/dashtree.git",
+    "directory": "packages/dashtree"
+  },
   "scripts": {
     "bundler:build": "rslib build && ts-node generate-manifest.script.ts",
     "compiler:check": "tsc --project tsconfig.json --noEmit",
