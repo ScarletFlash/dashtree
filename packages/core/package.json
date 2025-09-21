@@ -10,5 +10,7 @@
     "compiler:check": "cargo check",
     "test-runner:units": "cargo tarpaulin --fail-under 100"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "wasm-pack": "catalog:stack"
+  }
 }

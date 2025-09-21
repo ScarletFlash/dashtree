@@ -3,17 +3,20 @@ packages:
 
 catalogs:
   stack:
-    "@npm/types": ^2.1.0
-    "@types/node": ^24.5.2
-    "@rslib/core": ^0.13.3
+    wasm-pack: ^0.13.1
+    '@npm/types': ^2.1.0
+    '@types/node': ^24.5.2
+    '@rslib/core': ^0.13.3
     typescript: ^5.9.2
     ts-jest: ^29.4.1
     ts-node: ^10.9.2
-    "@jest/globals": ^30.0.5
-    "@jest/types": ^30.0.5
+    '@jest/globals': ^30.0.5
+    '@jest/types': ^30.0.5
     jest: ^30.0.5
   codebase:
     turbo: ^2.5.6
 
 onlyBuiltDependencies:
   - core-js
+  - unrs-resolver
+  - wasm-pack

@@ -22,6 +22,7 @@ jobs:
     name: Build and publish
     permissions:
       contents: read
+      id-token: write
     steps:
       - name: Fetch all required Git history
         uses: actions/checkout@v5
