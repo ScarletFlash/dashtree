@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@dashtree/core": "workspace:*",
+    "@dashtree/testing": "workspace:*",
     "@jest/globals": "catalog:stack",
     "@jest/types": "catalog:stack",
     "jest": "catalog:stack",
