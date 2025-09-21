@@ -12,17 +12,19 @@ import { join } from "node:path";
   const sourceFilePath = join(__dirname, fileName);
   const resultFilePath = join(__dirname, resultDirectoryName, fileName);
 
-  const { name, version, main, module, types }: PackageJSON = JSON.parse(
-    await readFile(sourceFilePath, {
-      encoding,
-    }),
-  );
+  const { name, version, license, main, module, types }: PackageJSON =
+    JSON.parse(
+      await readFile(sourceFilePath, {
+        encoding,
+      }),
+    );
 
   const unnecessarySegment = `${resultDirectoryName}/`;
 
   const resultFileContent: PackageJSON = {
     name,
     version,
+    license,
     main:
       typeof main === "string" ? main.replace(unnecessarySegment, "") : main,
     module:
