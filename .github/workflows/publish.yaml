@@ -1,0 +1,82 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Package version"
+        type: string
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Build and publish
+    permissions:
+      contents: read
+    steps:
+      - name: Fetch all required Git history
+        uses: actions/checkout@v5
+
+      - name: Restore caches
+        id: caches
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .turbo/
+            !.turbo/runs/
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-main-
+            ${{ runner.os }}-build-
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: package.json
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all the packages
+        run: pnpm run build
+
+      - name: Publish dashtree package to NPM
+        run: |
+          cd packages/dashtree/dist
+
+          if pnpm view dashtree@"${TARGET_VERSION}" > /dev/null 2>&1; then
+            echo "Version already exists. Skipping publish."
+          else
+
+            pnpm version ${TARGET_VERSION}
+            pnpm config set //registry.npmjs.org/:_authToken ${NODE_AUTH_TOKEN}
+            pnpm publish --access public --no-git-checks
+          fi
+        env:
+          TARGET_VERSION: ${{ inputs.version }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save caches
+        if: ${{ always() && steps.caches.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .turbo/
+            !.turbo/runs/
+          key: ${{ runner.os }}-build-${{ github.ref_name == 'main' && format('main-{0}', github.sha) || github.sha }}

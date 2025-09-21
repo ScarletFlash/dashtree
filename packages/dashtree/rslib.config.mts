@@ -12,7 +12,7 @@ export default defineConfig({
     tsconfigPath: "./tsconfig.lib.json",
   },
   output: {
-    minify: false,
+    minify: true,
     sourceMap: false,
     target: "node",
   },

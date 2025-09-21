@@ -11,6 +11,24 @@
     "turbo.json"
   ],
   "tasks": {
+    "bundler:build": {
+      "cache": true,
+      "inputs": [
+        "./**/*.{js,ts,rs}",
+        "./**/tsconfig.*",
+        "./**/.cargo/config.toml",
+        "./package.json",
+        "./Cargo.toml",
+        "!./out-tsc/",
+        "!./target/",
+        "!./dist/",
+        "!./coverage/"
+      ],
+      "outputs": ["dist"],
+      "outputLogs": "errors-only",
+      "persistent": false,
+      "dependsOn": ["^bundler:build"]
+    },
     "compiler:check": {
       "cache": true,
       "inputs": [

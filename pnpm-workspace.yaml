@@ -3,6 +3,8 @@ packages:
 
 catalogs:
   stack:
+    "@npm/types": ^2.1.0
+    "@types/node": ^24.5.2
     "@rslib/core": ^0.13.3
     typescript: ^5.9.2
     ts-jest: ^29.4.1

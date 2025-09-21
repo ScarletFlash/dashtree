@@ -2,6 +2,8 @@
   "name": "@dashtree/root",
   "private": true,
   "scripts": {
+    "build": "pnpm run bundler:build",
+    "bundler:build": "turbo run bundler:build",
     "postinstall": "cargo install cargo-tarpaulin",
     "compiler:build": "turbo run compiler:build",
     "compiler:check": "turbo run compiler:check",
